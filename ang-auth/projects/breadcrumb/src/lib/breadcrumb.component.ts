@@ -49,7 +49,7 @@ export class BreadcrumbComponent implements OnInit {
   public ngOnInit() {
     if (this.router.navigated) {
       this.generateBreadcrumbTrail();
-    };
+    }
 
     // subscribe to the NavigationEnd event
     this.router.events.pipe(

@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { OnboardRoutingModule } from './onboard-routing.module';
-import { RegistrationComponent } from './registration/registration.component';
-import { ForgotComponent } from './forgot/forgot.component';
-import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RegistrationComponent } from './registration';
+import { ForgotComponent } from './forgot';
+import { LoginComponent } from './login';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -14,7 +15,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     OnboardRoutingModule
   ]
 })
-export class OnboardModule { }
+export class OnboardModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: OnboardModule,
+      providers: []
+    };
+  }
+}

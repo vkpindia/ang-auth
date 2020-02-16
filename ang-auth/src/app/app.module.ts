@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OnboardLayoutComponent } from './layout/onboard/onboard-layout/onboard-layout.component';
 import { UserLayoutComponent } from './layout/user-layout/user-layout/user-layout.component';
 import { BreadcrumbModule } from 'projects/breadcrumb/src/public-api';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor, JwtInterceptor, fakeBackendProvider } from './_helpers';
 
 @NgModule({
   declarations: [
@@ -32,9 +34,16 @@ import { BreadcrumbModule } from 'projects/breadcrumb/src/public-api';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    HttpClientModule,
     BreadcrumbModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
