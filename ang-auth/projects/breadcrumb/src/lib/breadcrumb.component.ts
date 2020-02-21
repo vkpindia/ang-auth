@@ -10,6 +10,7 @@ import { BreadcrumbService } from './breadcrumb.service';
   styleUrls: ['./breadcrumb.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class BreadcrumbComponent implements OnInit {
   private ROUTE_DATA_BREADCRUMB = 'breadcrumb';
   private ROUTE_PARAM_BREADCRUMB = 'breadcrumb';
@@ -33,18 +34,6 @@ export class BreadcrumbComponent implements OnInit {
     });
   }
 
-  /**
-   * @description
-   * @author Virendra Pandey
-   * @date 2020-02-15
-   * @param {TBreadcrumb} breadcrumb
-   * @returns {boolean}
-   * @memberof BreadcrumbComponent
-   */
-  public hasParams(breadcrumb: TBreadcrumb) {
-    return Object.keys(breadcrumb.params).length ? [breadcrumb.url, breadcrumb.params] : [breadcrumb.url];
-  }
-
 
   public ngOnInit() {
     if (this.router.navigated) {
@@ -57,6 +46,18 @@ export class BreadcrumbComponent implements OnInit {
       )).subscribe(event => {
         this.generateBreadcrumbTrail();
       });
+  }
+
+  /**
+   * @description
+   * @author Virendra Pandey
+   * @date 2020-02-15
+   * @param {TBreadcrumb} breadcrumb
+   * @returns {boolean}
+   * @memberof BreadcrumbComponent
+   */
+  public hasParams(breadcrumb: TBreadcrumb) {
+    return Object.keys(breadcrumb.params).length ? [breadcrumb.url, breadcrumb.params] : [breadcrumb.url];
   }
 
   /**

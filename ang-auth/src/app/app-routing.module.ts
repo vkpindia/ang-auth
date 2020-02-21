@@ -19,9 +19,9 @@ const routes: Routes = [
   {
     path: '',
     component: UserLayoutComponent,
-    data: {
+    /* data: {
       breadcrumb: 'Home'
-    },
+    }, */
     children: [
       {
         path: '',

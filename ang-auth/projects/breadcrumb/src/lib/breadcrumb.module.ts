@@ -5,8 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { BreadcrumbService } from './breadcrumb.service';
 
-
-
 @NgModule({
   declarations: [BreadcrumbComponent],
   imports: [
